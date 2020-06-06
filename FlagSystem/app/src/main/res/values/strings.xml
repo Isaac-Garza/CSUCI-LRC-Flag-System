@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Flag System</string>
+    <string name="selectSubject">Available Subjects at this Time:</string>
 </resources>
