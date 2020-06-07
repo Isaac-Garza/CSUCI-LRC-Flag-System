@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Flag System</string>
     <string name="selectSubject">Available Subjects at this Time:</string>
+    <string name="temp_string">Temp_String</string>
 </resources>
