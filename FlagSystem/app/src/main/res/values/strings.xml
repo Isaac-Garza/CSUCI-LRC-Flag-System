@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Flag System</string>
     <string name="selectSubject">Available Subjects at this Time:</string>
+    <string name="math">MATH</string>
+    <string name="chem">CHEMISTRY</string>
+    <string name="buss_econ">BUSINESS/ECON</string>
+    <string name="bio">BIOLOGY</string>
+    <string name="phys">PHYSICS</string>
+    <string name="psych_soc">PSYCHOLOGY/SOCIOLOGY</string>
+    <string name="health">HEALTH SCIENCE</string>
+    <string name="comp">COMP-SCI</string>
+    <string name="nursing">NURSING</string>
+    <string name="other">OTHER</string>
     <string name="temp_string">Temp_String</string>
 </resources>
