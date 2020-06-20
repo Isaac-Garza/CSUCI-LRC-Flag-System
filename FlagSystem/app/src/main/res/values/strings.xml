@@ -13,4 +13,7 @@
     <string name="other">OTHER</string>
     <string name="temp_string">Temp_String</string>
     <string name="page_tutor">Page a Tutor</string>
+    <string name="request_text">A (Subject) Tutor has been Requested</string>
+    <string name="please_wait">Please Wait\nOne of these Tutor(s) will be right with you:</string>
+    <string name="cancel_req">Cancel Request</string>
 </resources>
