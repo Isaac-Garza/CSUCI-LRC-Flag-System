@@ -14,6 +14,8 @@ public class WaitingRoom extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting_room);
 
+        
+
         CardView cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(this);
     }

@@ -37,9 +37,47 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v)
+    public void onClick(View view)
     {
-        Intent i = new Intent(this,WaitingRoom.class);
-        startActivity(i);
+        Intent intent = new Intent(this,WaitingRoom.class);
+        String selectedButton = "";
+
+        switch(view.getId())
+        {
+            case R.id.mathButton:
+                selectedButton = "MATH";
+                break;
+            case R.id.chemButton:
+                selectedButton = "CHEM";
+                break;
+            case R.id.bus_econButton:
+                selectedButton = "BUS/ECON";
+                break;
+            case R.id.bio_button:
+                selectedButton = "BIO";
+                break;
+            case R.id.physButton:
+                selectedButton = "PHYS";
+                break;
+            case R.id.physch_sociButton:
+                selectedButton = "PHYCH/SOCI";
+                break;
+            case R.id.heathsciButton:
+                selectedButton = "HEALTH SCI";
+                break;
+            case R.id.compButton:
+                selectedButton = "COMP";
+                break;
+            case R.id.nursingButton:
+                selectedButton = "NURSING";
+                break;
+            case R.id.otherButton:
+                selectedButton = "OTHER";
+                break;
+
+
+        }
+        intent.putExtra("pressed_button",selectedButton);
+        startActivity(intent);
     }
 }
