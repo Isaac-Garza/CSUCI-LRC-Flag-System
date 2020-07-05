@@ -74,8 +74,6 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
             case R.id.otherButton:
                 selectedButton = "OTHER";
                 break;
-
-
         }
         intent.putExtra("pressed_button",selectedButton);
         startActivity(intent);
