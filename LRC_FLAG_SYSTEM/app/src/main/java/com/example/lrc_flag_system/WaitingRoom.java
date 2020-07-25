@@ -17,8 +17,7 @@ public class WaitingRoom extends AppCompatActivity implements View.OnClickListen
         Intent intent = getIntent();
         String button = intent.getStringExtra("pressed_button");
         String selectedSubject = "A %s Tutor has been Requested";
-
-        TextView titleName = findViewById(R.id.titleText);
+        TextView titleName = findViewById(R.id.request);
         selectedSubject = String.format(selectedSubject, button);
         titleName.setText(selectedSubject);
 
@@ -31,4 +30,5 @@ public class WaitingRoom extends AppCompatActivity implements View.OnClickListen
         Intent i = new Intent(this,Subject.class);
         startActivity(i);
     }
+    
 }
