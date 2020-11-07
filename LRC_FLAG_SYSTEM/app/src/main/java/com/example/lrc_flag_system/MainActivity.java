@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -32,7 +33,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         Intent intent = new Intent(this,Subject.class);
         tableString = tableSpinner.getSelectedItem().toString();
-        intent.putExtra("TableNumber", tableString);
-        startActivity(intent);
+
+        if(!tableString.equals("Table Number")) {
+            intent.putExtra("TableNumber", tableString);
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "Please Select Table Number!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
