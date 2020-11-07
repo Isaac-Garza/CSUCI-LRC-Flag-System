@@ -6,12 +6,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Subject extends AppCompatActivity implements View.OnClickListener {
+
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+    String tableNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject);
+
+        tableNumber = getIntent().getStringExtra("TableNumber");
+
         CardView mathButton = findViewById(R.id.mathButton);
         CardView chemButton = findViewById(R.id.chemButton);
         CardView bus_econButton = findViewById(R.id.bus_econButton);
@@ -75,7 +85,21 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
                 selectedButton = "OTHER";
                 break;
         }
+
+        TableModel extraTable = signalTutor(selectedButton);
         intent.putExtra("pressed_button",selectedButton);
+        intent.putExtra("TableValue", extraTable);
         startActivity(intent);
+    }
+
+    public TableModel signalTutor(String subject) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("Table");
+
+        TableModel tableModel = new TableModel(tableNumber, subject);
+
+        reference.child(tableModel.getTableNumber()).setValue(tableModel);
+
+        return tableModel;
     }
 }
