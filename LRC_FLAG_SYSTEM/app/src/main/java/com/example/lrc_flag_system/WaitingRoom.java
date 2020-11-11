@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class WaitingRoom extends AppCompatActivity implements View.OnClickListener {
 
@@ -58,10 +60,10 @@ public class WaitingRoom extends AppCompatActivity implements View.OnClickListen
         tutor2 = findViewById(R.id.tutor_2);
         tutor3 = findViewById(R.id.tutor_3);
 
-        final ArrayList<TextView> tutors = new ArrayList<>();
-        tutors.add(tutor1);
-        tutors.add(tutor2);
-        tutors.add(tutor3);
+        final ArrayList<TextView> tutorsList = new ArrayList<>();
+        tutorsList.add(tutor1);
+        tutorsList.add(tutor2);
+        tutorsList.add(tutor3);
 
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("Schedule");
@@ -93,33 +95,27 @@ public class WaitingRoom extends AppCompatActivity implements View.OnClickListen
                 currentDay = "SAT";
                 break;
         }
-
-            reference.addChildEventListener(new ChildEventListener() {
+//        reference = reference.child(currentDay);
+        reference = reference.child("SAT").child(subject);
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String hello;
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<String> tutors = new ArrayList<>();
+                int index = 0;
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String tutor = ds.getKey();
+                    tutors.add(tutor);
+
+                    tutorsList.get(index).setText(tutors.get(index));
+                    index++;
+                }
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        reference.addListenerForSingleValueEvent(eventListener);
 
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
     }
 
