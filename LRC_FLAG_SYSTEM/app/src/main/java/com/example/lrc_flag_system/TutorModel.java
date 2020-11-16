@@ -6,15 +6,34 @@ import android.os.Parcelable;
 public class TutorModel implements Parcelable {
     private String id;
     private String name;
+    private String role;
+    private String subject;
+    private String userID;
+    private boolean logged_in;
+
 
     // constructor
-    public TutorModel(String id, String name, String role, String subject){
+    public TutorModel(String id, String name, String role, String subject, String userID){
         this.id = id;
         this.name = name;
+        this.role = role;
+        this.subject = subject;
+        this.userID = userID;
+        this.logged_in = false;
     }
 
-    public TutorModel(Parcel in) {
+    public TutorModel() {
 
+    }
+
+    //toString
+
+    protected TutorModel(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        role = in.readString();
+        subject = in.readString();
+        userID = in.readString();
     }
 
     public static final Creator<TutorModel> CREATOR = new Creator<TutorModel>() {
@@ -29,17 +48,26 @@ public class TutorModel implements Parcelable {
         }
     };
 
-    //toString
     @Override
     public String toString() {
         return "TutorModel{" +
                 "ID='" + id + "'" +
-                "name='" + name + '\'' +
+                " name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                ", subject='" + subject + '\'' +
+                ", userID='" + userID + '\'' +
                 '}';
     }
 
 
     // getters and setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -49,12 +77,32 @@ public class TutorModel implements Parcelable {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getRole() {
+        return role;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public Boolean getLoggedIn() {
+        return this.logged_in;
+    }
+
+    public void setLogged_in(Boolean logged_in) {
+        this.logged_in = logged_in;
+    }
+
+    public String getUserID() {
+        return this.userID;
     }
 
     @Override
@@ -66,5 +114,8 @@ public class TutorModel implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(name);
+        dest.writeString(role);
+        dest.writeString(subject);
+        dest.writeString(userID);
     }
 }

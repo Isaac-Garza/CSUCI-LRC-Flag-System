@@ -1,6 +1,8 @@
 package com.example.lrc_flag_system;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,42 +53,54 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
     {
         Intent intent = new Intent(this,WaitingRoom.class);
         String selectedButton = "";
+        int subjectColor = -1;
 
         switch(view.getId())
         {
             case R.id.mathButton:
                 selectedButton = "MATH";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.red, null);
                 break;
             case R.id.chemButton:
                 selectedButton = "CHEM";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.orange, null);
                 break;
             case R.id.bus_econButton:
                 selectedButton = "BUS/ECON";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.yellow, null);
                 break;
             case R.id.bio_button:
                 selectedButton = "BIO";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.green, null);
                 break;
             case R.id.physButton:
                 selectedButton = "PHYS";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.light_blue, null);
                 break;
             case R.id.physch_sociButton:
                 selectedButton = "PHYCH/SOCI";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.blue, null);
                 break;
             case R.id.heathsciButton:
                 selectedButton = "HEALTH SCI";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.purple, null);
                 break;
             case R.id.compButton:
                 selectedButton = "COMP";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.grey, null);
                 break;
             case R.id.nursingButton:
                 selectedButton = "NURSING";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.pink, null);
                 break;
             case R.id.otherButton:
                 selectedButton = "OTHER";
+                subjectColor = ResourcesCompat.getColor(getResources(), R.color.other_color, null);
                 break;
         }
 
         TableModel extraTable = signalTutor(selectedButton);
+        intent.putExtra("color_text", subjectColor);
         intent.putExtra("pressed_button",selectedButton);
         intent.putExtra("TableValue", extraTable);
         startActivity(intent);

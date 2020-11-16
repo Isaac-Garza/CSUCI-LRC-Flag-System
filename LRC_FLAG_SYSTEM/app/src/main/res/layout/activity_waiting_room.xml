@@ -12,7 +12,7 @@
     <TextView
         android:padding="16dp"
         android:id="@+id/request"
-        android:text="@string/request_text"
+        android:text="@string/request"
         android:textSize="36sp"
         android:textColor="@android:color/black"
         android:layout_width="match_parent"
