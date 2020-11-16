@@ -18,6 +18,7 @@
             android:id="@+id/titleText"
             android:text="@string/selectSubject"
             android:textSize="36sp"
+            android:textColor="@android:color/black"
             android:padding="16dp"
             android:gravity="center_horizontal"
             android:layout_centerInParent="true"
