@@ -7,12 +7,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,10 +31,9 @@ import java.util.Calendar;
 import java.util.List;
 
 public class WaitingRoom extends AppCompatActivity implements View.OnClickListener {
-
     TextView tutor1, tutor2, tutor3;
     TextView titleName;
-    Calendar calendar;
+    ImageView tutorImage1, tutorImage2, tutorImage3;
 
     TableModel tableFlagged;
 
@@ -50,7 +51,7 @@ public class WaitingRoom extends AppCompatActivity implements View.OnClickListen
         tableFlagged = intent.getParcelableExtra("TableValue");
         int textColor = intent.getIntExtra("color_text", 0);
 
-        TextView titleName = findViewById(R.id.request);
+        titleName = findViewById(R.id.request);
         String selectedSubject = "A " + button + " Tutor has been Requested";
 
         SpannableString spannableString = new SpannableString(selectedSubject);
@@ -60,11 +61,18 @@ public class WaitingRoom extends AppCompatActivity implements View.OnClickListen
 
         titleName.setText(spannableString);
 
+        tutorImage1 = findViewById(R.id.tutor_image1);
+        tutorImage2 = findViewById(R.id.tutor_image2);
+        tutorImage3 = findViewById(R.id.tutor_image3);
+
         addAvaliableTutors(button);
 
         CardView cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(this);
     }
+
+
+
 
     private void addAvaliableTutors(final String subject) {
         tutor1 = findViewById(R.id.tutor_1);

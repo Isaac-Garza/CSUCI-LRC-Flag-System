@@ -40,6 +40,7 @@
         android:layout_weight="1.5">
 
         <ImageView
+            android:id="@+id/tutor_image1"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:padding="10dp"
@@ -47,6 +48,7 @@
             android:layout_height="2dp"/>
 
         <ImageView
+            android:id="@+id/tutor_image2"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:padding="10dp"
@@ -54,6 +56,7 @@
             android:layout_height="2dp"/>
 
         <ImageView
+            android:id="@+id/tutor_image3"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:padding="10dp"
