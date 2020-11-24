@@ -112,7 +112,7 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
 
         TableModel tableModel = new TableModel(tableNumber, subject);
 
-        reference.child(tableModel.getTableNumber()).setValue(tableModel);
+        reference.child(tableModel.getTableNumber()).setValue(subject);
 
         return tableModel;
     }
