@@ -14,4 +14,5 @@
     <color name="pink">#ff00fe</color>
     <color name="other_color">#c17ba0</color>
     <color name="white">#F0F0F0</color>
+    <color name="faded">#81888888</color>
 </resources>
