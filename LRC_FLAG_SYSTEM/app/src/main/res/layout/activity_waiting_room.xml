@@ -6,13 +6,15 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:weightSum="5"
-    android:background="@color/white">
+    android:background="@drawable/gradient_color">
 
 
     <TextView
+        android:textStyle="bold"
         android:padding="16dp"
         android:id="@+id/request"
         android:text="@string/request"
+
         android:textSize="36sp"
         android:textColor="@android:color/black"
         android:layout_width="match_parent"
@@ -64,6 +66,7 @@
             android:layout_height="2dp"/>
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/tutor_1"
             android:text=""
             android:layout_columnWeight="1"
@@ -72,6 +75,7 @@
             android:textColor="@android:color/black"
             android:gravity="center_horizontal"/>
         <TextView
+            android:textStyle="bold"
             android:id="@+id/tutor_2"
             android:text=""
             android:layout_columnWeight="1"
@@ -80,6 +84,7 @@
             android:textColor="@android:color/black"
             android:gravity="center_horizontal"/>
         <TextView
+            android:textStyle="bold"
             android:id="@+id/tutor_3"
             android:text=""
             android:layout_columnWeight="1"

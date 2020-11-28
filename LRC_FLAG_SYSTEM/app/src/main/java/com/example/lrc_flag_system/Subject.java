@@ -9,6 +9,7 @@ import androidx.core.content.res.ResourcesCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -82,39 +83,39 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
                     if ((Boolean)pair.getValue() == false) {
                         switch (pair.getKey().toString()) {
                             case "MATH":
-                                mathButton.setClickable(false);
+                                mathButton.setActivated(false);
                                 mathButton.setCardBackgroundColor(faded);
                                 break;
                             case "CHEM":
-                                chemButton.setClickable(false);
+                                chemButton.setActivated(false);
                                 chemButton.setCardBackgroundColor(faded);
                                 break;
                             case "BUS/ECON":
-                                bus_econButton.setClickable(false);
+                                bus_econButton.setActivated(false);
                                 bus_econButton.setCardBackgroundColor(faded);
                                 break;
                             case "BIO":
-                                bioButton.setClickable(false);
+                                bioButton.setActivated(false);
                                 bioButton.setCardBackgroundColor(faded);
                                 break;
-                            case "PHY":
-                                phyButton.setClickable(false);
+                            case "PHYS":
+                                phyButton.setActivated(false);
                                 phyButton.setCardBackgroundColor(faded);
                                 break;
                             case "PHYCH/SOCI":
-                                physch_socButton.setClickable(false);
+                                physch_socButton.setActivated(false);
                                 physch_socButton.setCardBackgroundColor(faded);
                                 break;
                             case "HEALTH SCI":
-                                healthButton.setClickable(false);
+                                healthButton.setActivated(false);
                                 healthButton.setCardBackgroundColor(faded);
                                 break;
                             case "COMP":
-                                compButton.setClickable(false);
+                                compButton.setActivated(false);
                                 compButton.setCardBackgroundColor(faded);
                                 break;
                             case "NURSING":
-                                nursingButton.setClickable(false);
+                                nursingButton.setActivated(false);
                                 nursingButton.setCardBackgroundColor(faded);
                                 break;
                         }
@@ -128,14 +129,33 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
             }
         });
         mathButton.setOnClickListener(this);
+        mathButton.setActivated(true);
+
         chemButton.setOnClickListener(this);
+        chemButton.setActivated(true);
+
         bus_econButton.setOnClickListener(this);
+        bus_econButton.setActivated(true);
+
         bioButton.setOnClickListener(this);
+        bioButton.setActivated(true);
+
         phyButton.setOnClickListener(this);
+        phyButton.setActivated(true);
+
+
         physch_socButton.setOnClickListener(this);
+        physch_socButton.setActivated(true);
+
         healthButton.setOnClickListener(this);
+        healthButton.setActivated(true);
+
         compButton.setOnClickListener(this);
+        compButton.setActivated(true);
+
         nursingButton.setOnClickListener(this);
+        nursingButton.setActivated(true);
+
         otherButton.setOnClickListener(this);
     }
 
@@ -190,11 +210,16 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
 
-        TableModel extraTable = signalTutor(selectedButton);
-        intent.putExtra("color_text", subjectColor);
-        intent.putExtra("pressed_button",selectedButton);
-        intent.putExtra("TableValue", extraTable);
-        startActivity(intent);
+        if(!view.isActivated()) {
+            Toast.makeText(this, selectedButton +" is not available at this time!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            TableModel extraTable = signalTutor(selectedButton);
+            intent.putExtra("color_text", subjectColor);
+            intent.putExtra("pressed_button", selectedButton);
+            intent.putExtra("TableValue", extraTable);
+            startActivity(intent);
+        }
     }
 
     public TableModel signalTutor(String subject) {
