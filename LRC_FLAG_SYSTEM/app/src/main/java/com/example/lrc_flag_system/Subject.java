@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
     String tableNumber;
     TutorModel avaliableSubject;
     HashMap<String, Boolean> avaliableSubjects = new HashMap<>();
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,15 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
                         avaliableSubjects.put(tutorSubject, true);
                     }
                 }
+                mathButton.setClickable(true);
+                chemButton.setClickable(true);
+                bus_econButton.setClickable(true);
+                bioButton.setClickable(true);
+                phyButton.setClickable(true);
+                physch_socButton.setClickable(true);
+                healthButton.setClickable(true);
+                compButton.setClickable(true);
+                nursingButton.setClickable(true);
                 Iterator it = avaliableSubjects.entrySet().iterator();
                 while(it.hasNext()) {
                     Map.Entry pair = (Map.Entry) it.next();
@@ -128,31 +139,39 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
         });
         mathButton.setOnClickListener(this);
         mathButton.setActivated(true);
+        mathButton.setClickable(false);
 
         chemButton.setOnClickListener(this);
         chemButton.setActivated(true);
+        chemButton.setClickable(false);
 
         bus_econButton.setOnClickListener(this);
         bus_econButton.setActivated(true);
+        bus_econButton.setClickable(false);
 
         bioButton.setOnClickListener(this);
         bioButton.setActivated(true);
+        bioButton.setClickable(false);
 
         phyButton.setOnClickListener(this);
         phyButton.setActivated(true);
-
+        phyButton.setClickable(false);
 
         physch_socButton.setOnClickListener(this);
         physch_socButton.setActivated(true);
+        physch_socButton.setClickable(false);
 
         healthButton.setOnClickListener(this);
         healthButton.setActivated(true);
+        healthButton.setClickable(false);
 
         compButton.setOnClickListener(this);
         compButton.setActivated(true);
+        compButton.setClickable(false);
 
         nursingButton.setOnClickListener(this);
         nursingButton.setActivated(true);
+        nursingButton.setClickable(false);
 
         otherButton.setOnClickListener(this);
     }
@@ -212,6 +231,11 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
             Toast.makeText(this, selectedButton +" is not available at this time!", Toast.LENGTH_SHORT).show();
         }
         else {
+            progressDialog = new ProgressDialog(Subject.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
             TableModel extraTable = signalTutor(selectedButton);
             intent.putExtra("color_text", subjectColor);
             intent.putExtra("pressed_button", selectedButton);
@@ -237,6 +261,5 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-
     }
 }
