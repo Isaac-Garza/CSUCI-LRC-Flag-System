@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardView pageTutorButton;
     Spinner tableSpinner;
     String tableString;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tableString = tableSpinner.getSelectedItem().toString();
 
         if(!tableString.equals("Table Number")) {
+            progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
             intent.putExtra("TableNumber", tableString);
             startActivity(intent);
+            finish();
         }
         else {
             Toast.makeText(this, "Please Select Table Number!", Toast.LENGTH_SHORT).show();
