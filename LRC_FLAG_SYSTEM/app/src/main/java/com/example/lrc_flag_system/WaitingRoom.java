@@ -114,7 +114,17 @@ public class WaitingRoom extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("Table");
+        reference.child(tableFlagged.getTableNumber()).removeValue();
 
+        Intent intent = new Intent(this,Subject.class);
+        intent.putExtra("TableNumber", tableFlagged.getTableNumber());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("Table");
         reference.child(tableFlagged.getTableNumber()).removeValue();

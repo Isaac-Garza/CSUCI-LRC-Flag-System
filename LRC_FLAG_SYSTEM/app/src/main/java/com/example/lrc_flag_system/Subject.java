@@ -31,7 +31,6 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
     DatabaseReference reference;
     String tableNumber;
     TutorModel avaliableSubject;
-    List<String> subjects = Arrays.asList("MATH","CHEM","BUS/ECON","BIO","PHY","PHYCH/SOCI","HEALTH SCI","COMP","NURSING");
     HashMap<String, Boolean> avaliableSubjects = new HashMap<>();
 
     @Override
@@ -71,7 +70,6 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
                 for(DataSnapshot ds : snapshot.getChildren()) {
                     avaliableSubject = ds.getValue(TutorModel.class);
                     String[] separatedSubjects = avaliableSubject.getSubject().split(", ");
-                    // Make a array of true boolean, set them false and traverse through them
                     for (String tutorSubject : separatedSubjects) {
                         avaliableSubjects.put(tutorSubject, true);
                     }
@@ -219,6 +217,7 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
             intent.putExtra("pressed_button", selectedButton);
             intent.putExtra("TableValue", extraTable);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -231,5 +230,13 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
         reference.child(tableModel.getTableNumber()).setValue(subject);
 
         return tableModel;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 }
