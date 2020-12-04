@@ -259,6 +259,7 @@ public class Subject extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("TableNumber", tableNumber);
         startActivity(intent);
         finish();
     }

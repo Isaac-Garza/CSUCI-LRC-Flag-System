@@ -71,7 +71,7 @@
             android:text=""
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
             android:gravity="center_horizontal"/>
         <TextView
@@ -80,7 +80,7 @@
             android:text=""
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
             android:gravity="center_horizontal"/>
         <TextView
@@ -89,7 +89,7 @@
             android:text=""
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
             android:gravity="center_horizontal"/>
     </GridLayout>

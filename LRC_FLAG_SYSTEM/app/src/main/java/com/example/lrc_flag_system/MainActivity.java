@@ -17,12 +17,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardView pageTutorButton;
     Spinner tableSpinner;
     String tableString;
+    String tableNumber;
     ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tableNumber = getIntent().getStringExtra("TableNumber");
         pageTutorButton = findViewById(R.id.pageTutor);
         tableSpinner = findViewById(R.id.tableSpinner);
 
